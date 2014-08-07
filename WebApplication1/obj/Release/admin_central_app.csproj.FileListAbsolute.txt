@@ -1,0 +1,8 @@
+C:\Users\jnegron.CIRACET\documents\visual studio 2012\Projects\admin_central_app\WebApplication1\bin\WebApplication1.dll
+C:\Users\jnegron.CIRACET\documents\visual studio 2012\Projects\admin_central_app\WebApplication1\bin\WebApplication1.pdb
+C:\Users\jnegron.CIRACET\documents\visual studio 2012\Projects\admin_central_app\WebApplication1\bin\ClassLibrary1.dll
+C:\Users\jnegron.CIRACET\documents\visual studio 2012\Projects\admin_central_app\WebApplication1\bin\ClassLibrary1.pdb
+C:\Users\jnegron.CIRACET\documents\visual studio 2012\Projects\admin_central_app\WebApplication1\obj\Release\admin_central_app.csprojResolveAssemblyReference.cache
+C:\Users\jnegron.CIRACET\documents\visual studio 2012\Projects\admin_central_app\WebApplication1\obj\Release\WebApplication1.dll.licenses
+C:\Users\jnegron.CIRACET\documents\visual studio 2012\Projects\admin_central_app\WebApplication1\obj\Release\WebApplication1.dll
+C:\Users\jnegron.CIRACET\documents\visual studio 2012\Projects\admin_central_app\WebApplication1\obj\Release\WebApplication1.pdb

@@ -1,0 +1,185 @@
+﻿@import url("http://fonts.googleapis.com/css?family=Ubuntu:400,700");
+@import url("http://weloveiconfonts.com/api/?family=entypo");
+
+/*General*/
+* {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body, .wrap {
+     color: #222222;
+     font: 1.1em/1.5 Ubuntu,sans-serif;
+}
+.wrap { padding: 10px; }
+     
+/*entypo*/
+[class*="entypo-"]:before {
+     border-radius: 50px;
+     font-family: 'entypo',Ubuntu,sans-serif;
+     font-size: 15vw;
+     font-style: normal;
+     margin-left: 15px;
+     padding: 10px;
+}
+.top-boxes > [class^="entypo"] { width: 20%; }
+    /*entypo individual style*/
+    .entypo-clipboard:before { background-color: #FCB9C9; }
+    .entypo-attention:before { background-color: #95CAFF; }
+    .entypo-basket:before { background-color: #A6FF6A; }
+    .entypo-docs:before { background-color: #FFFF88; }
+
+/*Main style layout */
+.top-boxes {
+     background: none repeat scroll 0% 0% #EDEFF0;
+     display: table;
+     height: 110px;
+     margin-top: 10px;
+     padding: 5px;
+     width: 100%;
+}
+    /*top-boxes layout*/
+    i, .top-boxes > p {
+         display: table-cell;
+         vertical-align: middle;
+    }
+    .top-boxes > p {
+         font-size: 5vw;
+         text-align: center;
+    }
+    .top-boxes > p > span:first-child {
+         color: gray;
+         font-size: 10vw;
+    }
+
+    
+.chart-container {
+     height: 280px;
+     margin-top: 10px;
+     overflow: hidden;
+     width: 100%;
+}
+    /*chart-container layout*/
+    .chart-header {
+         background: none repeat scroll 0% 0% rgba(25, 25, 25, 0.6);
+         color: #FFFFFF;
+         display: table;
+         font-size: 3.2vw;
+         height: 17.8571%;
+         padding: 5px;
+         width: 100%;
+    }
+    .chart-header > * {
+         display: table-cell;
+         font-weight: normal;
+         vertical-align: middle;
+    }
+    .chart-header p {
+         text-align: right;
+    }
+    .chart-header p > span {
+        color: #A6FF6A;
+    }
+    .chart-body {
+         background: none repeat scroll 0% 0% #EDEFF0;
+         height: 82.1429%;
+    }
+    .chart-img {         
+         height: 40px;
+         width: 40px;
+         padding: 3px 3px 0 3px;
+    }
+    #ASPxBinaryImage1 {
+        border: 1px solid;
+        border-radius: 50px;
+    }
+    #two-chrts-rsz1 {
+      width: 100%;      
+    }
+    #two-chrts-rsz2 {
+         display: none;
+    }
+    #resize-chrt4 > .chart-header { padding: 0;}
+
+    /*Behaviour*/
+    #resize-chrt1 .chart-header h3:hover {
+      cursor: pointer;
+      color: #FCB9C9;
+    }
+    .chart-header h3 > * {
+      font-size: inherit;
+    }
+    
+/* Media Queries */
+@media only screen and (min-width: 768px) {
+  .top-boxes, #resize-chrt2, 
+  #resize-chrt3 { 
+      display: inline-block; 
+  }
+  .top-boxes:nth-child(4), 
+  #resize-chrt3 { 
+      float: right; 
+  }
+  #two-chrts-rsz2 {
+         display: inline-block;
+         width: 70%;
+         float: right;
+  }
+  #two-chrts-rsz1 {
+      width: 30%;
+      float: left;
+  }
+  .chart-container {     
+     margin-top: 5px;     
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .top-boxes { width: 49%; }
+  .top-boxes:nth-child(2) { float: right; }
+  [class*="entypo-"]:before { font-size: 7.3vw; }
+  .top-boxes > p > span:first-child { font-size: 3.7vw; }
+  .top-boxes > p { font-size: 2.3vw; }
+  .chart-header { font-size: 1.7vw; }
+  #resize-chrt2, 
+  #resize-chrt3 { 
+      width: 49.65%; 
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .top-boxes { width: 24.5%; }
+  [class*="entypo-"]:before { font-size: 4vw; }
+  .top-boxes > p > span:first-child { font-size: 1.9vw; }
+  .top-boxes > p { font-size: 1.3vw; }
+  .top-boxes > * { padding-top: 15px; }
+  #resize-chrt2, 
+  #resize-chrt3 { 
+      width: 24.3%; 
+  }
+  #resize-chrt1, 
+  #resize-chrt4, 
+  #resize-chrt5 { 
+      display: inline-block; 
+  }
+  #resize-chrt4 { float: left; }
+  #resize-chrt1, 
+  #resize-chrt4 { 
+      width: 50%; 
+  }
+  #resize-chrt5 { 
+      width: 49.55%; 
+      float: right; 
+  }
+  .chart-header { font-size: 1.3vw; }
+}
+
+@media only screen and (min-width: 1450px){
+  .wrap { 
+      width: 1400px; 
+      margin: 0 auto; 
+  }
+  [class*="entypo-"]:before { font-size: 2.5em; }
+  .top-boxes > p > span:first-child { font-size: 1.7em; }
+  .top-boxes > p { font-size: 1em; }
+  .chart-header { font-size: .9em; }
+}

@@ -1,0 +1,86 @@
+﻿.main {
+     margin: 0px auto;
+     width: 1130px;
+}
+
+.section1 {
+     background-color: #8EC0E8;
+     float: left;
+     height: 135px;
+     margin-bottom: 5px;
+     padding: 5px 0px 0px 5px;
+     position: relative;
+     width: 1130px;
+}
+
+.bmet_img {
+     float: left;
+     width: 130px;
+}
+
+.bmet_name {
+     float: left;
+     left: 160px;
+     position: absolute;
+     top: 40%;
+     width: 720px;
+}
+
+.section2 {
+     background-color: #F1F5F5;
+     float: left;
+     height: 300px;
+     padding: 5px 0px 0px 5px;
+     width: 1130px;
+}
+
+.grid_hder {
+     border-bottom: 1px solid black;
+     padding-bottom: 2px;
+     width: 545px;
+}
+
+.detail_grid {
+     float: left;
+     height: 260px;
+     padding-top: 10px;
+     width: 560px;
+}
+
+.detail_mgnt {
+     float: left;
+}
+
+.chart_area1 {
+     float: left;
+     width: 285px;
+}
+
+.section3 {
+     background-color: #F1F5F5;
+     float: left;
+     height: 215px;
+     padding: 5px 0px 0px 5px;
+     width: 1130px;
+}
+
+.select_bmet_area {
+     float: left;
+     width: 560px;
+}
+
+.select_bmet {
+     float: left;
+     width: 560px;
+}
+
+.btn_overview {
+     float: left;
+     margin: 15px 3px 10px 0px;
+}
+
+.chart_area2 {
+     float: left;
+     height: 230px;
+     width: 560px;
+}
