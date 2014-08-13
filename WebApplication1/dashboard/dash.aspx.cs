@@ -14,12 +14,17 @@ namespace WebApplication1.dashboard
 {
     public partial class dash : System.Web.UI.Page
     {
+        
+
         //Class field declaration...
         User_BusinessLayer bmet = new User_BusinessLayer();
         List<UserFields> userList = null;
         UserPicture bmet_picture = new UserPicture();
 
+
+
         static int index = 0;   //Index for USERLIST
+        
 
         public dash()
         {
@@ -39,6 +44,7 @@ namespace WebApplication1.dashboard
 
                 getUser();
                 setUser();
+                setBMETID();                
             }            
         }
         
@@ -87,7 +93,7 @@ namespace WebApplication1.dashboard
         {
             index = cmbUser.SelectedIndex;
             setUser();
-
+            setBMETID();
         }
         protected void UpdatePanel1_Load(object sender, EventArgs e)
         {            
@@ -115,29 +121,33 @@ namespace WebApplication1.dashboard
             }
         }        
         protected void UpdatePanel3_Load(object sender, EventArgs e)
-        {            
-            switch (hdn_index.Value)
-            {                
-                case "-1":                    
-                    index--;
-                    if (index < 0)
-                    {
-                        index = userList.Count() - 1;
-                    }
-                    setUser();
-                    break;
-                case "+1":
-                    index++;
-                    if (index > userList.Count() - 1)
-                    {
-                        index = 0;
-                    }
-                    setUser();
-                    break;
-                default :
-                    setUser();
-                    break;
-            }            
+        {
+            if (IsPostBack)
+            {
+                switch (hdn_index.Value)
+                {
+                    case "-1":
+                        index--;
+                        if (index < 0)
+                        {
+                            index = userList.Count() - 1;
+                        }
+                        setUser();
+                        setBMETID();                        
+                        break;
+                    case "+1":
+                        index++;
+                        if (index > userList.Count() - 1)
+                        {
+                            index = 0;
+                        }
+                        setUser();
+                        setBMETID();                        
+                        break;
+                    default:
+                        break;
+                }                
+            }                        
         }        
 
         #region Custom Methods
@@ -206,7 +216,12 @@ namespace WebApplication1.dashboard
             lblUserName.Text = " " + this.userList[index].bmet_name.ToString();                             //User Name
             lblUserOverall.Text = objOverall.getUserCompliance(this.userList[index].bmet_id).ToString();    //User Overall
             SqlDataSource1.SelectParameters[0].DefaultValue = this.userList[index].bmet_id.ToString();      //User Chart1
-            SqlDataSource2.SelectParameters[0].DefaultValue = this.userList[index].bmet_id.ToString();      //User Chart2
+            SqlDataSource2.SelectParameters[0].DefaultValue = this.userList[index].bmet_id.ToString();      //User Chart2            
+        }
+        private void setBMETID()
+        {
+            int id = this.userList[index].bmet_id;
+            this.hdn_bmetid.Value = id.ToString();            
         }
         #endregion                                
         

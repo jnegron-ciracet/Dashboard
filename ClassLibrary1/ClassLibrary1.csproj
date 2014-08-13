@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BMET Config\BMETID.cs" />
     <Compile Include="BMET Config\Location_Bll.cs" />
     <Compile Include="BMET Config\Location_Dal.cs" />
     <Compile Include="BMET Config\Location_Entity.cs" />

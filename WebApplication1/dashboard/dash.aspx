@@ -23,8 +23,13 @@
 
         function closePopUp() {
             popHospital.Hide();
-            popUser.Hide();
-        }        
+            popUser.Hide();            
+        }
+
+        function getBmetValue() {
+            var id = document.getElementById('hdn_bmetid').value;
+            alert("value = " + id);
+        }
                       
     </script>
 </head>
@@ -624,9 +629,10 @@
                           <h3> <dx:ASPxLabel ID="lblUserName" runat="server"><ClientSideEvents Click="function(s, e) { popUser.Show(); }" /> </dx:ASPxLabel> </h3>
                           <p>BMET Compliance <span><asp:Label ID="lblUserOverall" CssClass="overall" runat="server"></asp:Label>%</span><dx:ASPxLabel ID="lblTools2" runat="server" CssClass="entypo-tools">
                               <ClientSideEvents Click="function(s, e) {
-	                                                                    popBmetDetail.SetContentUrl(&quot;../bmet_section/bmet_detail.aspx?UID=&quot; + 51);
+var id = document.getElementById('hdn_bmetid').value;
+	                                                                    popBmetDetail.SetContentUrl(&quot;../bmet_section/bmet_detail.aspx?UID=&quot; + id);
 	                                                                    popBmetDetail.Show();
-                                                                    }" /> </dx:ASPxLabel>                              
+                                                                    }" /> </dx:ASPxLabel>
                           </p>
                         </header>
                         <div class="chart-body">
@@ -911,6 +917,8 @@
                         </dx:PopupControlContentControl>
                       </ContentCollection>
                     </dx:ASPxPopupControl>
+                    <!-- HIDDEN FIELDS - BMET ID-->
+                    <asp:HiddenField ID="hdn_bmetid" runat="server"/>
                  </ContentTemplate>
                 </asp:UpdatePanel>
 
@@ -1057,9 +1065,10 @@
         <asp:HiddenField ID="hidden_rsz2" runat="server"/>
         <asp:HiddenField ID="hidden_chrt5Width" runat="server"/>
 
-        <!-- HIDDEN FIELDS - INDEX-->
+        <!-- HIDDEN FIELDS - BMET INDEX-->
         <asp:HiddenField ID="hdn_index" runat="server" Value="0"/>
-        
+      
+
     </form>
 </body>
 </html>

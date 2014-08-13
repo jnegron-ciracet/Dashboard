@@ -20,7 +20,7 @@ namespace webapp_reports.Location_By_User
         
         protected void cmbUsers_Init(object sender, EventArgs e)
         {
-            EvalQueryString();
+            EvalQueryString();            
         }
 
         int indexUser;
@@ -49,8 +49,9 @@ namespace webapp_reports.Location_By_User
         }
         
         public void EvalQueryString()
-        {   
+        {
             string UID = Request.QueryString["UID"];//Get UID Argument from Query String ?UID
+            
 
             //Create new instance of getAllUsers() Method
             Location_Bll obj = new Location_Bll();
@@ -58,7 +59,8 @@ namespace webapp_reports.Location_By_User
 
             //Create new instance of GetUserName Method. Get's user names to be compared with query string value...
             List<string> User = GetUserName();
-            Dictionary<string, int> dictionary = new Dictionary<string, int>();
+            Dictionary<string, int> dictionary = new Dictionary<string, int>();            
+            
             try
             {
                 int i = 0;
@@ -66,15 +68,15 @@ namespace webapp_reports.Location_By_User
                 {
                     //Add key (User Name) && value (index) to dictionary
                     dictionary.Add(value, i);
-                    i++;
+                    i++;                    
                 }
 
                 if (dictionary.ContainsKey(UID))
-                {
+                {                                    
                     cmbUsers.SelectedIndex = dictionary[UID]; //Set index for cmbUsers at page load event
                     lblUserName.Text = list[dictionary[UID]].bmet.ToString(); //Set user name to lblUserName at page load event
                     //int index = cmbUsers.SelectedIndex;
-                    Get_UserPicture(dictionary[UID]); //Fill ImgUser with binary value
+                    Get_UserPicture(dictionary[UID]); //Fill ImgUser with binary value               
                 }
                 else
                 {
@@ -92,8 +94,7 @@ namespace webapp_reports.Location_By_User
             using (SqlConnection conn = new SqlConnection(conn_string))
             {
                 string query = "SELECT	lu.UserID, s.Name + ' ' + s.FirstLastName As 'BMET'" +
-                               "FROM	LocationUsers As lu Left Outer Join SecUsers As s On lu.UserID = s.UserID " +
-                               //"WHERE s.Name + ' ' + s.FirstLastName =@Name" +
+                               "FROM	LocationUsers As lu Left Outer Join SecUsers As s On lu.UserID = s.UserID " +                               
                                "GROUP BY lu.UserID, s.Name, s.FirstLastName " +
                                "ORDER BY BMET";
 
@@ -105,7 +106,7 @@ namespace webapp_reports.Location_By_User
                     {
                         while (reader.Read())
                         {
-                            list.Add(reader["BMET"].ToString());                            
+                            list.Add(reader["UserID"].ToString());                            
                         }
                     }
                     finally

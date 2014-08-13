@@ -418,6 +418,15 @@ namespace WebApplication1.dashboard {
         protected global::DevExpress.Web.ASPxEditors.ASPxButton ASPxButton1;
         
         /// <summary>
+        /// hdn_bmetid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdn_bmetid;
+        
+        /// <summary>
         /// lblPendingPickUp2 control.
         /// </summary>
         /// <remarks>

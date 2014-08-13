@@ -3,3 +3,8 @@ c:\users\jnegron.ciracet\documents\visual studio 2012\Projects\admin_central_app
 c:\users\jnegron.ciracet\documents\visual studio 2012\Projects\admin_central_app\ClassLibrary1\obj\Debug\ClassLibrary1.csprojResolveAssemblyReference.cache
 c:\users\jnegron.ciracet\documents\visual studio 2012\Projects\admin_central_app\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 c:\users\jnegron.ciracet\documents\visual studio 2012\Projects\admin_central_app\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+C:\Users\jnegron.CIRACET\Repos\admin_central_app\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\jnegron.CIRACET\Repos\admin_central_app\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\jnegron.CIRACET\Repos\admin_central_app\ClassLibrary1\obj\Debug\ClassLibrary1.csprojResolveAssemblyReference.cache
+C:\Users\jnegron.CIRACET\Repos\admin_central_app\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\jnegron.CIRACET\Repos\admin_central_app\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
