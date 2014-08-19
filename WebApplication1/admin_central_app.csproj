@@ -75,6 +75,7 @@
     <Content Include="CSS\bmet_detail.css" />
     <Content Include="dashboard\dash.aspx" />
     <Content Include="Images\User.jpg" />
+    <Content Include="JS\cmb_multiple.js" />
     <Content Include="JS\resize.js" />
     <Content Include="JS\slider.js" />
     <Content Include="Web.config">

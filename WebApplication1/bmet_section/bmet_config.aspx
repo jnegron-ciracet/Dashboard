@@ -126,7 +126,7 @@
                         </Cell>
                     </Styles>
                   </dx:ASPxGridView>                
-                <asp:SqlDataSource ID="SqlUserDetail" runat="server" ConnectionString="Data Source=CIRACETSRV002\CIRACETSRV002;Initial Catalog=CiracetNew;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT	s.Name + ' ' + s.FirstLastName + ' ' + s.SecondLastName As 'BMET', 
+                <asp:SqlDataSource ID="SqlUserDetail" runat="server" ConnectionString="<%$ ConnectionStrings:CiracetNewConnectionString %>" ProviderName="System.Data.SqlClient" SelectCommand="SELECT	s.Name + ' ' + s.FirstLastName + ' ' + s.SecondLastName As 'BMET', 
 		        ho.InicialesHospital, ISNull(l.Nombre, 'N/A') As Location, lu.Date_Assigned
 
         FROM	LocationUsers As lu Inner Join
@@ -195,7 +195,7 @@
                   <dx:ASPxButton ID="btnClear" runat="server" Text="Clear" Height="35px" Width="80px" Font-Size="0.91em" Theme="Metropolis" AutoPostBack="False" ClientInstanceName="btnDetail" OnClick="btnClear_Click"></dx:ASPxButton>                  
                 </td>
                 <td style="width: 90px;">
-                  <dx:ASPxButton ID="btnDetail" runat="server" Text="Close" Height="35px" Width="80px" Font-Size="0.91em" Theme="Metropolis" AutoPostBack="False" ClientInstanceName="btnDetail"><ClientSideEvents Click="function(s, e) {window.parent.HidePopup();}" />
+                  <dx:ASPxButton ID="btnDetail" runat="server" Text="Close" Height="35px" Width="80px" Font-Size="0.91em" Theme="Metropolis" AutoPostBack="False" ClientInstanceName="btnDetail"><ClientSideEvents Click="function(s, e) {window.parent.closePopUp();}" />
                   </dx:ASPxButton>                                  
                 </td>
               </tr>

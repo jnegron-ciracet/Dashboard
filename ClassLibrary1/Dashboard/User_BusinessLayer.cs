@@ -20,12 +20,12 @@ namespace ClassLibrary1.Dashboard
         /* Class Methods Declaration Area */
         public List<UserFields> getBMET()
         {
-            string query = "Select	lu.UserID, s.Name + ' ' + s.FirstLastName As 'BMET' " +
+            string query = "Select	s.UserID, s.Name + ' ' + s.FirstLastName As 'BMET' " +
                             "From	LocationUsers lu Left Outer Join " +
                             "SecUsers s On lu.UserID = s.UserID " +
-                            "Where s.active = 1" +
-                            "GROUP BY	lu.UserID, s.Name, s.FirstLastName,  s.SecondLastName " +
-                            "ORDER BY	s.Name";
+                            "WHERE s.active = 1" +
+                            "GROUP BY	s.UserID, s.Name, s.FirstLastName,  s.SecondLastName " +
+                            "ORDER BY	BMET";
             User_DataLayer obj = new User_DataLayer();
             this.list = obj.returnFields(query);
             return this.list;

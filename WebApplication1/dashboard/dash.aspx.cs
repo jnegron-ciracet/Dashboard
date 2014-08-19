@@ -13,19 +13,14 @@ using ClassLibrary1.Return_String;
 namespace WebApplication1.dashboard
 {
     public partial class dash : System.Web.UI.Page
-    {
-        
-
+    {       
         //Class field declaration...
         User_BusinessLayer bmet = new User_BusinessLayer();
         List<UserFields> userList = null;
         UserPicture bmet_picture = new UserPicture();
 
-
-
         static int index = 0;   //Index for USERLIST
         
-
         public dash()
         {
             this.userList = bmet.getBMET();
@@ -39,8 +34,8 @@ namespace WebApplication1.dashboard
                 setOverall();
 
                 //Specify current date
-                lblMonth1.Text = DateTime.Now.ToString("MMMM");
-                lblMonth2.Text = DateTime.Now.ToString("MMMM");
+                lblMonth1.Text = DateTime.Now.ToString("MMM");
+                lblMonth2.Text = DateTime.Now.ToString("MMM");
 
                 getUser();
                 setUser();
@@ -61,20 +56,7 @@ namespace WebApplication1.dashboard
             {
                 cmbHospital.Native = true;
             }
-        }
-        protected void cmbHospital_SelectedIndexChanged(object sender, EventArgs e)
-        {            
-            //Update Interactive Charts
-            SqlDataSource7.SelectParameters["hospital"].DefaultValue = selectedHospitalValue();
-            SqlDataSource4.SelectParameters["hospital"].DefaultValue = selectedHospitalValue();
-            SqlDataSource5.SelectParameters["hospital"].DefaultValue = selectedHospitalValue();
-            WebChartControl4.DataBind();
-            WebChartControl5.DataBind();
-            WebChartControl7.DataBind();
-
-            //Update overalls
-            setOverall();
-        }
+        }        
         //Manage Control NATIVE property based on device screen
         protected void cmbUser_Load(object sender, EventArgs e)
         {
@@ -89,12 +71,27 @@ namespace WebApplication1.dashboard
                 cmbUser.Native = true;
             }
         }
+
+        protected void cmbHospital_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Update Interactive Charts
+            SqlDataSource7.SelectParameters["hospital"].DefaultValue = selectedHospitalValue();
+            SqlDataSource4.SelectParameters["hospital"].DefaultValue = selectedHospitalValue();
+            SqlDataSource5.SelectParameters["hospital"].DefaultValue = selectedHospitalValue();
+            WebChartControl4.DataBind();
+            WebChartControl5.DataBind();
+            WebChartControl7.DataBind();
+
+            //Update overalls
+            setOverall();
+        }
         protected void cmbUser_SelectedIndexChanged(object sender, EventArgs e)
         {
             index = cmbUser.SelectedIndex;
             setUser();
             setBMETID();
         }
+
         protected void UpdatePanel1_Load(object sender, EventArgs e)
         {            
             //Resize charts at page_load
@@ -180,7 +177,7 @@ namespace WebApplication1.dashboard
             /*TOP SECTION OVERALL */
             lblOpenPM.Text = objOverall.getOpenedPMs(30).ToString();           //Current Month Opened PMs
             lblOpenedPriorities.Text = objOverall.getOpenedPMs(31).ToString(); //Current Month Opened PMs Priorities
-            lblPendingPickUp1.Text = objOverall.getPendingPickUp().ToString(); //Total Pending PickUp
+            lblPendingClose.Text = objOverall.getPendingClose().ToString(); //Total Pending PickUp
             lblOpenedWO.Text = objOverall.getOpenedWO().ToString();            //All Opened WO
 
             /*CHART HEADER OVERALL */
@@ -207,6 +204,7 @@ namespace WebApplication1.dashboard
                         
             lblMonthlyPMCompliance2.Text = objOverall.getPMComplianceOverall(selectedHospitalValue()).ToString();       //Monthly PM Compliance Percentage
             lblYTDPriorityCompliance.Text = objOverall.getYTDPrioritiesCompliance(selectedHospitalValue()).ToString();  //YTD Priority Compliance Percentage
+            lblOpenedWO2.Text = objOverall.getOpenedWO().ToString();                                                    //All Opened WO
         }
         private void setUser()
         {

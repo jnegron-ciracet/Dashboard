@@ -23,7 +23,8 @@
 
         function closePopUp() {
             popHospital.Hide();
-            popUser.Hide();            
+            popUser.Hide();
+            popBmetDetail.Hide();
         }
 
         function getBmetValue() {
@@ -43,7 +44,7 @@
           <section>
             <div class="top-boxes"><i class="entypo-clipboard"></i><p><span><asp:Label ID="lblOpenPM" runat="server" Text="Label"></asp:Label></span> <asp:Label ID="lblMonth1" runat="server" Text="Label"></asp:Label> Opened PMs</p></div>
             <div class="top-boxes"><i class="entypo-attention"></i><p><span><asp:Label ID="lblOpenedPriorities" runat="server" Text="Label"></asp:Label></span> <asp:Label ID="lblMonth2" runat="server" Text="Label"></asp:Label> PM's Priorities</p></div>
-            <div class="top-boxes"><i class="entypo-basket"></i><p><span><asp:Label ID="lblPendingPickUp1" runat="server" Text=""></asp:Label></span> Uncollected Parts</p></div>
+            <div class="top-boxes"><i class="entypo-basket"></i><p><span><asp:Label ID="lblPendingClose" runat="server" Text=""></asp:Label></span> Pending Close (WO)</p></div>
             <div class="top-boxes"><i class="entypo-docs"></i><p><span><asp:Label ID="lblOpenedWO" CssClass="overall" runat="server" Text=""></asp:Label></span> Total Opened WO</p></div>
           </section><!-- END: SECTION1 -->
         
@@ -926,7 +927,7 @@ var id = document.getElementById('hdn_bmetid').value;
                 <div id="resize-chrt5" class="chart-container">
                   <header class="chart-header">
                     <h3>Open WO & Parts</h3>
-                    <p>Total <span><asp:Label ID="lblPendingPickUp2" CssClass="overall" runat="server" Text=""></asp:Label></span></p>
+                    <p>Total <span><asp:Label ID="lblOpenedWO2" CssClass="overall" runat="server" Text=""></asp:Label></span></p>
                   </header>
                   <div class="chart-body">
                     <dxchartsui:WebChartControl ID="WebChartControl6" runat="server" Height="230px" Width="470px" PaletteName="Palette 1" BackColor="Transparent" DataSourceID="SqlDataSource6">
@@ -965,7 +966,7 @@ var id = document.getElementById('hdn_bmetid').value;
                                         </cc1:SideBySideBarSeriesView>
                                     </viewserializable>
                                     <labelserializable>
-                                        <cc1:SideBySideBarSeriesLabel LineVisible="True" BackColor="Transparent" Font="Verdana, 10pt, style=Bold" TextColor="224, 224, 224">
+                                        <cc1:SideBySideBarSeriesLabel LineVisible="True" BackColor="Transparent" Font="Verdana, 10pt, style=Bold" TextColor="0, 0, 0">
                                             <border visible="False" /><fillstyle>
                                                 <optionsserializable>
                                                     <cc1:SolidFillOptions />
@@ -1036,10 +1037,8 @@ var id = document.getElementById('hdn_bmetid').value;
                     </dxchartsui:WebChartControl>
                     <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:CiracetNewConnectionString %>" SelectCommand="Select h.InicialesHospital As 'Hospital', Count(w.id) As 'Counter'
                         From  WorkOrder w Inner Join
-                            Hospital h On w.idHospital = h.idInstitucion Inner Join
-                            QuotationHeader qh On w.id = qh.WorkOrderId Inner Join
-                            Parte p On qh.ParteID = p.iD
-                        Where qh.Status = 7   
+                            Hospital h On w.idHospital = h.idInstitucion 
+                        Where w.isPreventiveMaintenance = 0 And w.WOCerrada = 0 And ParaCerrar = 0 And h.Eliminado = 0
                         Group By h.InicialesHospital
                         Order By h.InicialesHospital">
                     </asp:SqlDataSource>

@@ -67,13 +67,13 @@ namespace WebApplication1.dashboard {
         protected global::System.Web.UI.WebControls.Label lblMonth2;
         
         /// <summary>
-        /// lblPendingPickUp1 control.
+        /// lblPendingClose control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPendingPickUp1;
+        protected global::System.Web.UI.WebControls.Label lblPendingClose;
         
         /// <summary>
         /// lblOpenedWO control.
@@ -427,13 +427,13 @@ namespace WebApplication1.dashboard {
         protected global::System.Web.UI.WebControls.HiddenField hdn_bmetid;
         
         /// <summary>
-        /// lblPendingPickUp2 control.
+        /// lblOpenedWO2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPendingPickUp2;
+        protected global::System.Web.UI.WebControls.Label lblOpenedWO2;
         
         /// <summary>
         /// WebChartControl6 control.

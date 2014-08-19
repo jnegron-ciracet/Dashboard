@@ -18,8 +18,8 @@
     <link href="../CSS/bmet_detail.css" rel="stylesheet" />
 
     <script type="text/javascript">        
-        function HidePopup() {
-            popUserManagement.Hide();
+        function closePopUp() {
+            popBmetConfig.Hide();
         }
     </script>
 
@@ -419,7 +419,7 @@
                 </td>
                 <td style="width: 90px;">
                   <dx:ASPxButton ID="btnClose" runat="server" Text="Close" Height="35px" Width="80px" Font-Size="0.91em" AutoPostBack="False" CausesValidation="False" Theme="Metropolis" ClientInstanceName="btnClose">
-                    <ClientSideEvents Click="function(s, e) {window.parent.HidePopup();}" />                          
+                    <ClientSideEvents Click="function(s, e) {window.parent.closePopUp();}" />                          
                   </dx:ASPxButton>                          
                 </td>
               </tr>

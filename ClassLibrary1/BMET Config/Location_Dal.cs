@@ -48,9 +48,10 @@ namespace ClassLibrary.Data_Access_Layer
         {
             using (SqlConnection conn = new SqlConnection(conn_string))
             {
-                string query = "SELECT	lu.UserID, s.Name + ' ' + s.FirstLastName + ' ' + s.SecondLastName As 'BMET' " +
+                string query = "SELECT	s.UserID, s.Name + ' ' + s.FirstLastName + ' ' + s.SecondLastName As 'BMET' " +
                                "FROM	LocationUsers As lu Left Outer Join SecUsers As s On lu.UserID = s.UserID " +
-                               "GROUP BY lu.UserID, s.Name, s.FirstLastName,  s.SecondLastName " +
+                               "WHERE s.active = 1 " +
+                               "GROUP BY s.UserID, s.Name, s.FirstLastName,  s.SecondLastName " +
                                "ORDER BY BMET";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -81,7 +82,7 @@ namespace ClassLibrary.Data_Access_Layer
             {
                 string query = "SELECT	s.UserID, s.Name + ' ' + s.FirstLastName + ' ' + s.SecondLastName As 'BMET' " +
                                "FROM	SecUsers As s " +
-                               "WHERE Active = 1  And isTechnitian = 1 and roleid = 3 And UserID NOT IN (57, 60)" +
+                               "WHERE active = 1 AND isTechnitian = 1 AND roleId = 3 AND userId NOT IN (7, 69)" +
                                "ORDER BY BMET";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))

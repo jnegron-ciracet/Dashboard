@@ -45,9 +45,9 @@ namespace ClassLibrary1.Dashboard
                             "From	workorder w Inner Join " +
 		                            "equipamiento e On w.idEquipamiento = e.id Inner Join " +
 		                            "hospital h On w.idHospital = h.idInstitucion " +
-		
-                            "Where	idtipoworkorderprimario = " + woType + " And Month(fecharecibida) = Month(getDate()) And Year(fecharecibida) = Year(getDate()) " +
-		                            "And wocerrada = 0 And e.estado = 1 And h.eliminado = 0 And e.idFrecuencia <> 36 And h.pm = 1 ";
+
+                            "Where	idtipoworkorderprimario = " + woType + " And Month(w.FechaRecibida) = Month(GetDate()) And Year(w.FechaRecibida) = Year(GetDate()) " +
+		                            " And wocerrada = 0 And e.estado = 1 And h.eliminado = 0 And e.idFrecuencia <> 36 And h.pm = 1 ";
             this.result = obj.returnOverall(query);
             return this.result;
         }
@@ -75,10 +75,10 @@ namespace ClassLibrary1.Dashboard
 
         public decimal getYTDPrioritiesCompliance(string hospital)
         {
-            string query = "Declare @hospital [int] " + 
+            string query = "Declare @hospital [int] " +
                             "Set @hospital = " + hospital +
-                            "Select		Cast(Cast(Sum( Case When w.idTipoWorkOrder = 31 And w.wocerrada = 1  And Month(w.FechaRequerida) = Month(GetDate()) And Year(w.FechaRequerida) = Year(GetDate()) Then 1 Else 0 End ) As Numeric) / " +
-                                        "Cast(Sum( Case When w.idTipoWorkOrder = 31 And w.wocerrada = 0 And Year(w.FechaRequerida) = Year(GetDate()) Then 1 Else 0 End ) As Numeric) * 100 As Decimal(12,2)) As 'Percentage' " +
+                            "Select		Cast(Cast(Sum( Case When w.idTipoWorkOrder = 31 And w.wocerrada = 1  And Month(w.FechaRecibida) = Month(GetDate()) And Year(w.FechaRecibida) = Year(GetDate()) Then 1 Else 0 End ) As Numeric) / " +
+                                        "Cast(Sum( Case When w.idTipoWorkOrder = 31 And w.wocerrada = 0 Then 1 Else 0 End ) As Numeric) * 100 As Decimal(12,2)) As 'Percentage' " +
 
                             "From		Equipamiento As e Inner Join " +
                                         "WorkOrder As w On e.id = w.idEquipamiento Inner Join " +
@@ -86,7 +86,7 @@ namespace ClassLibrary1.Dashboard
                                         "MP On w.idMP = mp.id Full Join " +
                                         "MPIncompleto As mpi On mp.id = mpi.idMP " +
 
-                            "Where		h.Eliminado = 0 And e.Eliminado = 0 And e.idFrecuencia <> 36 And h.pm = 1 And IsPreventiveMaintenance = 1 And (@hospital = 0 Or w.idHospital = @hospital) ";
+                            "Where		h.Eliminado = 0 And e.Eliminado = 0 And IsPreventiveMaintenance = 1 And h.pm = 1 And ( @hospital = 0 Or w.idHospital = @hospital )";
             this.result = obj.returnOverall(query);
             return this.result;
         }
@@ -112,14 +112,11 @@ namespace ClassLibrary1.Dashboard
             return this.result;
         }
 
-        public decimal getPendingPickUp()
+        public decimal getPendingClose()
         {
-            string query = "Select Count(w.id) As 'Counter' " +
-                           "From	WorkOrder w Inner Join " +
-                                    "Hospital h On w.idHospital = h.idInstitucion Inner Join " +
-                                    "QuotationHeader qh On w.id = qh.WorkOrderId Inner Join " +
-                                    "Parte p On qh.ParteID = p.ID " +
-                           "Where	qh.Status = 7 ";
+            string query = "Select Count(id) As 'Counter' " +
+                           "From	WorkOrder " +
+                           "Where	ParaCerrar = 1 And WOCerrada = 0 and IsPreventiveMaintenance = 0 ";
 
             this.result = obj.returnOverall(query);
             return this.result;
@@ -127,10 +124,10 @@ namespace ClassLibrary1.Dashboard
 
         public decimal getOpenedWO()
         {
-            string query = "Select	Count(*) As 'Count' " +
+            string query = "Select	Count(id) As 'Count' " +
                             "From	workorder w Inner Join " +
 		                            "Hospital h On w.idHospital = h.idInstitucion " +
-                            "Where	w.isPreventiveMaintenance = 0 And w.WOCerrada = 0 And h.Eliminado = 0";
+                            "Where	w.isPreventiveMaintenance = 0 And w.WOCerrada = 0 And ParaCerrar = 0 And h.Eliminado = 0";
 
             this.result = obj.returnOverall(query);
             return this.result;
