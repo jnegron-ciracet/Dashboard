@@ -36,6 +36,8 @@ namespace WebApplication1.dashboard
                 //Specify current date
                 lblMonth1.Text = DateTime.Now.ToString("MMM");
                 lblMonth2.Text = DateTime.Now.ToString("MMM");
+                lblMonth3.Text = DateTime.Now.ToString("MMMM");
+                lblMonth4.Text = DateTime.Now.ToString("MMMM");
 
                 getUser();
                 setUser();

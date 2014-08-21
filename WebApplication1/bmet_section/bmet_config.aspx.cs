@@ -436,7 +436,7 @@ namespace webapp_reports.Location_By_User
 
         public List<string> GetUserID()
         {
-            string conn_string = "Server=CIRACETSRV002\\CIRACETSRV002; Database=CiracetNew;Integrated security= true;User Id=ciracet;Password=Ciracet@ponce";
+            string conn_string = "Server=CIRACET-CAMS-01; Database=CiracetNew;Persist Security Info=True;User Id=sa;Password=Ciracet@ponce";
             //List<Location_Entity> list = new List<Location_Entity>();
             List<string> list = new List<string>();
             using (SqlConnection conn = new SqlConnection(conn_string))
@@ -470,7 +470,7 @@ namespace webapp_reports.Location_By_User
         private void Get_UserPicture()
         {
 
-            string conn_string = "Server=CIRACETSRV002\\CIRACETSRV002; Database=CiracetNew;Integrated security= true;User Id=ciracet;Password=Ciracet@ponce";
+            string conn_string = "Server=CIRACET-CAMS-01; Database=CiracetNew;Persist Security Info=True;User Id=sa;Password=Ciracet@ponce";
             int uid = Int32.Parse(cmbUsers.Value.ToString());
             byte[] img = null;//value to be returned
 
@@ -536,7 +536,7 @@ namespace webapp_reports.Location_By_User
             catch (ArgumentNullException) { }
 
             //Sql Connection String
-            string conn_string = "Server=CIRACETSRV002\\CIRACETSRV002; Database=CiracetNew;Integrated security= true;User Id=ciracet;Password=Ciracet@ponce";
+            string conn_string = "Server=CIRACET-CAMS-01; Database=CiracetNew;Persist Security Info=True;User Id=sa;Password=Ciracet@ponce";
             using (SqlConnection conn = new SqlConnection(conn_string))
             {
                 string query = "SELECT bp.UserID, bp.Picture FROM BMET_Pic As bp WHERE UserID= @uid";

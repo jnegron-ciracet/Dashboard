@@ -16,7 +16,7 @@ body, .wrap {
 [class*="entypo-"]:before {
      border-radius: 50px;
      font-family: 'entypo',Ubuntu,sans-serif;
-     font-size: 15vw;
+     font-size: 2.8em;
      font-style: normal;
      margin-left: 15px;
      padding: 10px;
@@ -43,12 +43,12 @@ body, .wrap {
          vertical-align: middle;
     }
     .top-boxes > p {
-         font-size: 5vw;
+         font-size: 1em;
          text-align: center;
     }
     .top-boxes > p > span:first-child {
          color: gray;
-         font-size: 10vw;
+         font-size: 1.4em;
     }
 
     
@@ -110,6 +110,10 @@ body, .wrap {
     }
     
 /* Media Queries */
+@media only screen and (max-width: 768px) {
+	#lblTools2:before { display: none; }
+}
+
 @media only screen and (min-width: 768px) {
   .top-boxes, #resize-chrt2, 
   #resize-chrt3 { 
@@ -130,16 +134,16 @@ body, .wrap {
   }
   .chart-container {     
      margin-top: 5px;     
-  }
+  }  
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .top-boxes { width: 49%; }
   .top-boxes:nth-child(2) { float: right; }
-  [class*="entypo-"]:before { font-size: 7.3vw; }
-  .top-boxes > p > span:first-child { font-size: 3.7vw; }
-  .top-boxes > p { font-size: 2.3vw; }
-  .chart-header { font-size: 1.7vw; }
+  [class*="entypo-"]:before { font-size: 3.5em; }
+  .top-boxes > p > span:first-child { font-size: 1.6em; }
+  .top-boxes > p { font-size: 1em; }
+  .chart-header { font-size: .8em; }
   #resize-chrt2, 
   #resize-chrt3 { 
       width: 49.65%; 
@@ -147,14 +151,14 @@ body, .wrap {
 }
 
 @media only screen and (min-width: 1025px) {
-  .top-boxes { width: 24.5%; }
-  [class*="entypo-"]:before { font-size: 4vw; }
-  .top-boxes > p > span:first-child { font-size: 1.9vw; }
-  .top-boxes > p { font-size: 1.3vw; }
+  .top-boxes { width: 24.7%; }
+  [class*="entypo-"]:before { font-size: 2.2em; }
+  .top-boxes > p > span:first-child { font-size: 1.5em; }
+  .top-boxes > p { font-size: .69em; }
   .top-boxes > * { padding-top: 15px; }
   #resize-chrt2, 
   #resize-chrt3 { 
-      width: 24.3%; 
+      width: 24.6%; 
   }
   #resize-chrt1, 
   #resize-chrt4, 
@@ -170,7 +174,7 @@ body, .wrap {
       width: 49.55%; 
       float: right; 
   }
-  .chart-header { font-size: 1.3vw; }
+  .chart-header { font-size: .7em; }
 }
 
 @media only screen and (min-width: 1450px){

@@ -14,8 +14,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
    
-    <title></title>
-    <link href="../CSS/normalize.css" rel="stylesheet" />
+    <title></title>    
     <link href="../CSS/bmet_config.css" rel="stylesheet" />
 
 </head>
@@ -158,9 +157,9 @@
                   <td style="width: 70px;"> <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Hospital: " Font-Names="Calibri" Font-Size="Medium" Font-Bold="True"></dx:ASPxLabel> </td>
                   <td> <dx:ASPxComboBox ID="cmbHospital" runat="server" OnSelectedIndexChanged="cmbHospital_SelectedIndexChanged" Width="200px" IncrementalFilteringMode="Contains"></dx:ASPxComboBox></td>
                   <td style="width:5px;"></td>
-                  <td> <dx:ASPxButton ID="btnHospital_Add" runat="server" Text="Add" Height="35px" Width="80px" Font-Size="0.91em" Theme="Metropolis" OnClick="btnHospital_Add_Click" ClientInstanceName="btnAddHospital" AutoPostBack="False" CausesValidation="False" UseSubmitBehavior="False">
+                  <td> <dx:ASPxButton ID="btnHospital_Add" runat="server" Text="Add" Height="35px" Width="80px" Font-Size="0.91em" Theme="Default" OnClick="btnHospital_Add_Click" ClientInstanceName="btnAddHospital" AutoPostBack="False" CausesValidation="False" UseSubmitBehavior="False">
                       </dx:ASPxButton> </td>
-                  <td> <dx:ASPxButton ID="btnHospital_Remove" runat="server" Text="Remove" Height="35px" Width="80px" Font-Size="0.91em" Theme="Metropolis" OnClick="btnHospital_Remove_Click"></dx:ASPxButton> </td>
+                  <td> <dx:ASPxButton ID="btnHospital_Remove" runat="server" Text="Remove" Height="35px" Width="80px" Font-Size="0.91em" Theme="Default" OnClick="btnHospital_Remove_Click"></dx:ASPxButton> </td>
                 </tr>
             </table>
             <div style="padding-bottom:10px;"></div>
@@ -169,9 +168,9 @@
                   <td style="width: 70px;"> <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Location: " Font-Names="Calibri" Font-Size="Medium" Font-Bold="True"></dx:ASPxLabel> </td> 
                   <td> <dx:ASPxComboBox ID="cmbLocation2" runat="server" Width="200px" OnSelectedIndexChanged="cmbLocation2_SelectedIndexChanged" IncrementalFilteringMode="Contains" ClientInstanceName="cmbLocation2"></dx:ASPxComboBox> </td>
                   <td style="width:10px;"></td>
-                  <td> <dx:ASPxButton ID="btnLocation_Add" runat="server" Text="Add" Height="35px" Width="80px" Font-Size="0.91em" Theme="Metropolis" ClientInstanceName="btnAddLocation" OnClick="btnLocation_Add_Click">
+                  <td> <dx:ASPxButton ID="btnLocation_Add" runat="server" Text="Add" Height="35px" Width="80px" Font-Size="0.91em" Theme="Default" ClientInstanceName="btnAddLocation" OnClick="btnLocation_Add_Click">
                       </dx:ASPxButton> </td>
-                  <td> <dx:ASPxButton ID="btnLocationl_Remove" runat="server" Text="Remove" Height="35px" Width="80px" Font-Size="0.91em" Theme="Metropolis" OnClick="btnLocationl_Remove_Click">
+                  <td> <dx:ASPxButton ID="btnLocationl_Remove" runat="server" Text="Remove" Height="35px" Width="80px" Font-Size="0.91em" Theme="Default" OnClick="btnLocationl_Remove_Click">
                       </dx:ASPxButton> </td>
                 </tr>  
             </table>                                       

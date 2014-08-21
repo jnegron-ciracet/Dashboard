@@ -410,7 +410,7 @@
             <table> 
               <tr>
                 <td style="width: 90px;">
-                  <dx:ASPxButton ID="btnManage" runat="server" Text="Manage" Height="35px" Width="80px" Font-Size="0.91em" AutoPostBack="False" CausesValidation="False" Theme="Metropolis" ClientInstanceName="btnManage">
+                  <dx:ASPxButton ID="btnManage" runat="server" Text="Manage" Height="35px" Width="80px" Font-Size="0.91em" AutoPostBack="False" CausesValidation="False" Theme="Metropolis" ClientInstanceName="btnManage" Enabled="False">
                     <ClientSideEvents Click="function(s, e) {
                     var uIndex = cmbUsers.GetSelectedIndex();
                     popBmetConfig.SetContentUrl(&quot;../bmet_section/bmet_config.aspx?UID=&quot; + uIndex);

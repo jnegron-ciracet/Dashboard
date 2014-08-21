@@ -42,8 +42,8 @@
         <div class="wrap">
         <!-- SECTION1 -->  
           <section>
-            <div class="top-boxes"><i class="entypo-clipboard"></i><p><span><asp:Label ID="lblOpenPM" runat="server" Text="Label"></asp:Label></span> <asp:Label ID="lblMonth1" runat="server" Text="Label"></asp:Label> Opened PMs</p></div>
-            <div class="top-boxes"><i class="entypo-attention"></i><p><span><asp:Label ID="lblOpenedPriorities" runat="server" Text="Label"></asp:Label></span> <asp:Label ID="lblMonth2" runat="server" Text="Label"></asp:Label> PM's Priorities</p></div>
+            <div class="top-boxes"><i class="entypo-clipboard"></i><p><span><asp:Label ID="lblOpenPM" runat="server" Text="Label"></asp:Label></span> <asp:Label ID="lblMonth1" runat="server" Text="Label"></asp:Label>. Opened PMs</p></div>
+            <div class="top-boxes"><i class="entypo-attention"></i><p><span><asp:Label ID="lblOpenedPriorities" runat="server" Text="Label"></asp:Label></span> <asp:Label ID="lblMonth2" runat="server" Text="Label"></asp:Label>. PM's Priorities</p></div>
             <div class="top-boxes"><i class="entypo-basket"></i><p><span><asp:Label ID="lblPendingClose" runat="server" Text=""></asp:Label></span> Pending Close (WO)</p></div>
             <div class="top-boxes"><i class="entypo-docs"></i><p><span><asp:Label ID="lblOpenedWO" CssClass="overall" runat="server" Text=""></asp:Label></span> Total Opened WO</p></div>
           </section><!-- END: SECTION1 -->
@@ -57,7 +57,8 @@
                     <!-- DIV: CHART 1 -->                
                     <div id="resize-chrt1" class="chart-container">                        
                       <header class="chart-header">
-                        <h3><dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="Monthly PM's By Hospital ("></dx:ASPxLabel>                                                        
+                        <h3><asp:Label ID="lblMonth3" runat="server" Text="Label"></asp:Label>
+                            <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text=" PM's By Hospital ("></dx:ASPxLabel>                                                        
                             <dx:ASPxLabel ID="lblSelectedHospital" runat="server" Text=""></dx:ASPxLabel> )
                         </h3>                      
                         <p>Overall <span><asp:Label ID="lblPMCompliance" CssClass="overall" runat="server" Text=""></asp:Label>%</span>
@@ -303,7 +304,7 @@
                     <!-- DIV: CHART 2 -->        
                     <div id="resize-chrt2" class="chart-container">                  
                       <header class="chart-header">
-                        <h3>Monthly PM's</h3>
+                        <h3><asp:Label ID="lblMonth4" runat="server" Text="Label"></asp:Label> PM's</h3>
                         <p>Compliance <span><asp:Label ID="lblMonthlyPMCompliance2" runat="server" Text=""></asp:Label>%</span></p>
                       </header>                    
                       <div class="chart-body">
@@ -926,7 +927,7 @@ var id = document.getElementById('hdn_bmetid').value;
                 <!-- DIV: CHART 5 -->        
                 <div id="resize-chrt5" class="chart-container">
                   <header class="chart-header">
-                    <h3>Open WO & Parts</h3>
+                    <h3>Total Opened WO</h3>
                     <p>Total <span><asp:Label ID="lblOpenedWO2" CssClass="overall" runat="server" Text=""></asp:Label></span></p>
                   </header>
                   <div class="chart-body">
@@ -966,7 +967,7 @@ var id = document.getElementById('hdn_bmetid').value;
                                         </cc1:SideBySideBarSeriesView>
                                     </viewserializable>
                                     <labelserializable>
-                                        <cc1:SideBySideBarSeriesLabel LineVisible="True" BackColor="Transparent" Font="Verdana, 10pt, style=Bold" TextColor="0, 0, 0">
+                                        <cc1:SideBySideBarSeriesLabel LineVisible="True" BackColor="Transparent" Font="Verdana, 8pt" TextColor="0, 0, 0">
                                             <border visible="False" /><fillstyle>
                                                 <optionsserializable>
                                                     <cc1:SolidFillOptions />

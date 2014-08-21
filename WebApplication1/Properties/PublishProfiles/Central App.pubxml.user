@@ -6,5 +6,50 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\jnegron.CIRACET\Desktop\DEPLOYMENT</_PublishTargetUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/ClassLibrary1.dll">
+      <publishTime>08/20/2014 08:58:30</publishTime>
+    </File>
+    <File Include="bin/WebApplication1.dll">
+      <publishTime>08/20/2014 14:51:29</publishTime>
+    </File>
+    <File Include="bmet_section/bmet_config.aspx">
+      <publishTime>08/19/2014 16:01:56</publishTime>
+    </File>
+    <File Include="bmet_section/bmet_detail.aspx">
+      <publishTime>08/20/2014 14:36:25</publishTime>
+    </File>
+    <File Include="CSS/bmet_config.css">
+      <publishTime>07/21/2014 15:29:21</publishTime>
+    </File>
+    <File Include="CSS/bmet_detail.css">
+      <publishTime>07/21/2014 15:54:24</publishTime>
+    </File>
+    <File Include="CSS/dash.css">
+      <publishTime>08/20/2014 14:57:01</publishTime>
+    </File>
+    <File Include="CSS/normalize.css">
+      <publishTime>06/24/2014 12:18:15</publishTime>
+    </File>
+    <File Include="dashboard/dash.aspx">
+      <publishTime>08/19/2014 15:59:08</publishTime>
+    </File>
+    <File Include="Images/User.jpg">
+      <publishTime>07/02/2014 15:35:42</publishTime>
+    </File>
+    <File Include="JS/cmb_multiple.js">
+      <publishTime>08/18/2014 11:02:21</publishTime>
+    </File>
+    <File Include="JS/resize.js">
+      <publishTime>07/03/2014 11:06:41</publishTime>
+    </File>
+    <File Include="JS/slider.js">
+      <publishTime>08/13/2014 10:27:20</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>08/20/2014 10:14:09</publishTime>
+    </File>
+  </ItemGroup>
 </Project>
