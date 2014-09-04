@@ -293,7 +293,7 @@
                             </ToolTipPositionSerializable>
                             </ToolTipOptions>
                           </dxchartsui:WebChartControl>
-                          <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:CiracetNewConnectionString %>" ProviderName="System.Data.SqlClient" SelectCommand="spS_Dashboard_Yearly_PM_History_PerHospital" SelectCommandType="StoredProcedure">
+                          <asp:SqlDataSource ID="SqlDataSource7" runat="server" ConnectionString="<%$ ConnectionStrings:CiracetNewConnectionString %>" ProviderName="System.Data.SqlClient" SelectCommand="spS_Dashboard_Yearly_PM_History_PerHospital" SelectCommandType="StoredProcedure" ValidateRequestMode="Disabled" CancelSelectOnNullParameter="False">
                             <SelectParameters>
                                 <asp:Parameter DefaultValue="0" Name="hospital" Type="Int32" />
                             </SelectParameters>
@@ -441,7 +441,7 @@
                                     </ToolTipPositionSerializable>
                                     </ToolTipOptions>
                         </dxchartsui:WebChartControl>
-                        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:CiracetNewConnectionString %>" SelectCommand="spS_Dashboard_Monthly_PM_History" SelectCommandType="StoredProcedure" ProviderName="System.Data.SqlClient">
+                        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:CiracetNewConnectionString %>" SelectCommand="spS_Dashboard_Monthly_PM_History" SelectCommandType="StoredProcedure" ProviderName="System.Data.SqlClient" ValidateRequestMode="Disabled" CancelSelectOnNullParameter="False">
                             <SelectParameters>
                                 <asp:Parameter DefaultValue="0" Name="hospital" Type="Int32" />
                             </SelectParameters>
@@ -588,7 +588,7 @@
                                     </ToolTipPositionSerializable>
                                     </ToolTipOptions>
                         </dxchartsui:WebChartControl>
-                        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:CiracetNewConnectionString %>" SelectCommand="spS_Dashboard_Monthly_PM_History" SelectCommandType="StoredProcedure" ProviderName="System.Data.SqlClient">
+                        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:CiracetNewConnectionString %>" SelectCommand="spS_Dashboard_Monthly_PM_History" SelectCommandType="StoredProcedure" ProviderName="System.Data.SqlClient" CancelSelectOnNullParameter="False" ValidateRequestMode="Disabled">
                             <SelectParameters>
                                 <asp:Parameter DefaultValue="0" Name="hospital" Type="Int32" />
                             </SelectParameters>
@@ -602,8 +602,13 @@
                             <table>
                                 <tr>                                    
                                     <td style="vertical-align: middle;">
-                                      <dx:ASPxComboBox ID="cmbHospital" runat="server" ValueType="System.String" ClientInstanceName="cmbHospital" AutoPostBack="True" OnSelectedIndexChanged="cmbHospital_SelectedIndexChanged" EnableSynchronization="False" IncrementalFilteringMode="Contains" OnLoad="cmbHospital_Load" RenderIFrameForPopupElements="True" HelpText="Select a Hospital..." Width="230px">
-                                          <ClientSideEvents SelectedIndexChanged="function(s, e) { closePopUp(); }" /> </dx:ASPxComboBox>	                                                                                                                                                                                                                                         
+                                      <dx:ASPxComboBox ID="cmbHospital" runat="server" ValueType="System.String" ClientInstanceName="cmbHospital" AutoPostBack="True" OnSelectedIndexChanged="cmbHospital_SelectedIndexChanged" EnableSynchronization="True" IncrementalFilteringMode="Contains" OnLoad="cmbHospital_Load" RenderIFrameForPopupElements="True" HelpText="Select a Hospital..." Width="230px">
+                                          <ClientSideEvents SelectedIndexChanged="function(s, e) {
+	closePopUp();
+}" />
+                                          <ValidationSettings ValidateOnLeave="False">
+                                          </ValidationSettings>
+                                          </dx:ASPxComboBox>	                                                                                                                                                                                                                                         
                                     </td>
                                     <td style="width:10px;"></td>
                                     <td style="vertical-align: middle;"> <dx:ASPxButton ID="btnClosePopHospital" runat="server" Text="Close" Height="35px" Width="90px" Font-Size="0.91em" Theme="Metropolis" ClientInstanceName="btnClosePopHospital" AutoPostBack="False">
@@ -611,6 +616,20 @@
                                     </td>    
                                 </tr>
                             </table>                                                            
+                        </dx:PopupControlContentControl>
+                      </ContentCollection>
+                    </dx:ASPxPopupControl>
+                    <dx:ASPxPopupControl ID="popAlert" runat="server" ClientInstanceName="popAlert" HeaderText="Alert!" Modal="False" PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AutoUpdatePosition="True" Width="300px">
+                      <ContentCollection>
+                        <dx:PopupControlContentControl ID="PopupControlContentControl3" runat="server" SupportsDisabledAttribute="True">
+                          <table>
+                            <tr>
+                              <td><asp:Label ID="Label1" runat="server" Text="The selected hospital didn't return any value..."></asp:Label></td>
+                            </tr>
+                            <tr>
+                              <td><dx:ASPxButton ID="btnClosePopAlert_Hospital" runat="server" Text="Close" Height="35px" Width="90px" Font-Size="0.91em" Theme="Metropolis" ClientInstanceName="btnClosePopHospital" AutoPostBack="False"><ClientSideEvents Click="closePopUp" /></dx:ASPxButton></td>                                        
+                            </tr>
+                          </table>              
                         </dx:PopupControlContentControl>
                       </ContentCollection>
                     </dx:ASPxPopupControl>

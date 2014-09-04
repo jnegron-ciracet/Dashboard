@@ -20,7 +20,8 @@ namespace WebApplication1.dashboard
         UserPicture bmet_picture = new UserPicture();
 
         static int index = 0;   //Index for USERLIST
-        
+        static int loads_count = 0;
+
         public dash()
         {
             this.userList = bmet.getBMET();
@@ -57,7 +58,7 @@ namespace WebApplication1.dashboard
             else
             {
                 cmbHospital.Native = true;
-            }
+            }            
         }        
         //Manage Control NATIVE property based on device screen
         protected void cmbUser_Load(object sender, EventArgs e)
@@ -76,16 +77,33 @@ namespace WebApplication1.dashboard
 
         protected void cmbHospital_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Update Interactive Charts
+            //Update Interactive Charts 
             SqlDataSource7.SelectParameters["hospital"].DefaultValue = selectedHospitalValue();
-            SqlDataSource4.SelectParameters["hospital"].DefaultValue = selectedHospitalValue();
-            SqlDataSource5.SelectParameters["hospital"].DefaultValue = selectedHospitalValue();
-            WebChartControl4.DataBind();
-            WebChartControl5.DataBind();
-            WebChartControl7.DataBind();
 
-            //Update overalls
-            setOverall();
+            //Validate if the selected hospital returns value
+            System.Data.DataView dv = (System.Data.DataView)SqlDataSource7.Select(DataSourceSelectArguments.Empty);
+            int rows_counter = dv.Count;
+
+            if (rows_counter > 0)
+            {                
+                //Update Interactive Charts 
+                
+                SqlDataSource4.SelectParameters["hospital"].DefaultValue = selectedHospitalValue();
+                SqlDataSource5.SelectParameters["hospital"].DefaultValue = selectedHospitalValue();
+
+                WebChartControl4.DataBind();
+                WebChartControl5.DataBind();
+                WebChartControl7.DataBind();
+
+                //Update overalls
+                setOverall();
+                
+            }
+            else if (rows_counter == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "MYFUNCTION", "popAlert.Show();", true);
+            }                      
+            
         }
         protected void cmbUser_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -95,15 +113,19 @@ namespace WebApplication1.dashboard
         }
 
         protected void UpdatePanel1_Load(object sender, EventArgs e)
-        {            
-            //Resize charts at page_load
-            this.WebChartControl1.Width = new Unit(hidden_rsz1.Value);
-            this.WebChartControl2.Width = new Unit(hidden_rsz2.Value);
-            this.WebChartControl3.Width = new Unit(hidden_chrt1Width.Value);
-            this.WebChartControl4.Width = new Unit(hidden_chrt2Width.Value);
-            this.WebChartControl5.Width = new Unit(hidden_chrt3Width.Value);
-            this.WebChartControl6.Width = new Unit(hidden_chrt5Width.Value);
-            this.WebChartControl7.Width = new Unit(hidden_chrt1Width.Value);
+        {
+            loads_count++;
+            if (loads_count == 2)
+            {
+                //Resize charts at page_load
+                this.WebChartControl1.Width = new Unit(hidden_rsz1.Value);
+                this.WebChartControl2.Width = new Unit(hidden_rsz2.Value);
+                this.WebChartControl3.Width = new Unit(hidden_chrt1Width.Value);
+                this.WebChartControl4.Width = new Unit(hidden_chrt2Width.Value);
+                this.WebChartControl5.Width = new Unit(hidden_chrt3Width.Value);
+                this.WebChartControl6.Width = new Unit(hidden_chrt5Width.Value);
+                this.WebChartControl7.Width = new Unit(hidden_chrt1Width.Value);                
+            }
         }
         protected void UpdatePanel2_Load(object sender, EventArgs e)
         {            
@@ -120,7 +142,7 @@ namespace WebApplication1.dashboard
             }
         }        
         protected void UpdatePanel3_Load(object sender, EventArgs e)
-        {
+        {            
             if (IsPostBack)
             {
                 switch (hdn_index.Value)
@@ -223,7 +245,6 @@ namespace WebApplication1.dashboard
             int id = this.userList[index].bmet_id;
             this.hdn_bmetid.Value = id.ToString();            
         }
-        #endregion                                
-        
+        #endregion        
     }
 }
