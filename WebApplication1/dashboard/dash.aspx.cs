@@ -83,13 +83,17 @@ namespace WebApplication1.dashboard
             //Validate if the selected hospital returns value
             System.Data.DataView dv = (System.Data.DataView)SqlDataSource7.Select(DataSourceSelectArguments.Empty);
             int rows_counter = dv.Count;
-
+            
             if (rows_counter > 0)
             {                
-                //Update Interactive Charts 
-                
+                //Update Interactive Charts                 
                 SqlDataSource4.SelectParameters["hospital"].DefaultValue = selectedHospitalValue();
                 SqlDataSource5.SelectParameters["hospital"].DefaultValue = selectedHospitalValue();
+
+                WebChartControl4.Visible = true;
+                WebChartControl5.Visible = true;
+                WebChartControl7.Visible = true;
+
 
                 WebChartControl4.DataBind();
                 WebChartControl5.DataBind();
@@ -101,9 +105,11 @@ namespace WebApplication1.dashboard
             }
             else if (rows_counter == 0)
             {
+                WebChartControl4.Visible = false;
+                WebChartControl5.Visible = false;
+                WebChartControl7.Visible = false;
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "MYFUNCTION", "popAlert.Show();", true);
-            }                      
-            
+            }                                  
         }
         protected void cmbUser_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -114,9 +120,10 @@ namespace WebApplication1.dashboard
 
         protected void UpdatePanel1_Load(object sender, EventArgs e)
         {
+            /*
             loads_count++;
             if (loads_count == 2)
-            {
+            {*/
                 //Resize charts at page_load
                 this.WebChartControl1.Width = new Unit(hidden_rsz1.Value);
                 this.WebChartControl2.Width = new Unit(hidden_rsz2.Value);
@@ -125,7 +132,7 @@ namespace WebApplication1.dashboard
                 this.WebChartControl5.Width = new Unit(hidden_chrt3Width.Value);
                 this.WebChartControl6.Width = new Unit(hidden_chrt5Width.Value);
                 this.WebChartControl7.Width = new Unit(hidden_chrt1Width.Value);                
-            }
+            //}
         }
         protected void UpdatePanel2_Load(object sender, EventArgs e)
         {            

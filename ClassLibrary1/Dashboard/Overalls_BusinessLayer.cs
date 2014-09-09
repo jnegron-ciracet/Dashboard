@@ -47,7 +47,7 @@ namespace ClassLibrary1.Dashboard
 		                            "hospital h On w.idHospital = h.idInstitucion " +
 
                             "Where	idtipoworkorderprimario = " + woType + " And Month(w.FechaRecibida) = Month(GetDate()) And Year(w.FechaRecibida) = Year(GetDate()) " +
-		                            " And wocerrada = 0 And e.estado = 1 And h.eliminado = 0 And e.idFrecuencia <> 36 And h.pm = 1 ";
+		                            " And wocerrada = 0 And h.eliminado = 0 And h.pm = 1 ";
             this.result = obj.returnOverall(query);
             return this.result;
         }
@@ -77,8 +77,12 @@ namespace ClassLibrary1.Dashboard
         {
             string query = "Declare @hospital [int] " +
                             "Set @hospital = " + hospital +
-                            "Select		Cast(Cast(Sum( Case When w.idTipoWorkOrder = 31 And w.wocerrada = 1  And Month(w.FechaRecibida) = Month(GetDate()) And Year(w.FechaRecibida) = Year(GetDate()) Then 1 Else 0 End ) As Numeric) / " +
-                                        "Cast(Sum( Case When w.idTipoWorkOrder = 31 And w.wocerrada = 0 Then 1 Else 0 End ) As Numeric) * 100 As Decimal(12,2)) As 'Percentage' " +
+                            "Select		CASE WHEN ( Sum( Case When w.idTipoWorkOrder = 31 And w.wocerrada = 1  And Month(w.FechaRecibida) = Month(GetDate()) And Year(w.FechaRecibida) = Year(GetDate()) Then 1 Else 0 End ) ) = 0 THEN 0 " +
+                                        "ELSE ( " +
+                                                "Cast(Cast(Sum( Case When w.idTipoWorkOrder = 31 And w.wocerrada = 1  And Month(w.FechaRecibida) = Month(GetDate()) And Year(w.FechaRecibida) = Year(GetDate()) Then 1 Else 0 End ) As Numeric) / " +
+                                                "Cast(Sum( Case When w.idTipoWorkOrder = 31 And w.wocerrada = 0 Then 1 Else 0 End ) As Numeric) * 100 As Decimal(12,2)) " +
+                                              ") " +
+                                        "END AS 'Percentage' " +
 
                             "From		Equipamiento As e Inner Join " +
                                         "WorkOrder As w On e.id = w.idEquipamiento Inner Join " +

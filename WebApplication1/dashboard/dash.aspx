@@ -26,7 +26,9 @@
             popUser.Hide();
             popBmetDetail.Hide();
         }
-
+        function closeAlert() {
+            popAlert.Hide();
+        }
         function getBmetValue() {
             var id = document.getElementById('hdn_bmetid').value;
             alert("value = " + id);
@@ -595,7 +597,7 @@
                         </asp:SqlDataSource>
                         </div>
                     </div><!-- END: CHART 3 -->                                                        
-                    <!-- POPUP: POPHOSPITAL --> 
+                    <!-- POPUP: POPHOSPITAL -->
                     <dx:ASPxPopupControl ID="popHospital" runat="server" ClientInstanceName="popHospital" HeaderText="Hospital!" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AutoUpdatePosition="True" Width="350px">
                       <ContentCollection>
                         <dx:PopupControlContentControl ID="PopupControlContentControl1"  runat="server">
@@ -603,9 +605,7 @@
                                 <tr>                                    
                                     <td style="vertical-align: middle;">
                                       <dx:ASPxComboBox ID="cmbHospital" runat="server" ValueType="System.String" ClientInstanceName="cmbHospital" AutoPostBack="True" OnSelectedIndexChanged="cmbHospital_SelectedIndexChanged" EnableSynchronization="True" IncrementalFilteringMode="Contains" OnLoad="cmbHospital_Load" RenderIFrameForPopupElements="True" HelpText="Select a Hospital..." Width="230px">
-                                          <ClientSideEvents SelectedIndexChanged="function(s, e) {
-	closePopUp();
-}" />
+                                          <ClientSideEvents SelectedIndexChanged="function(s, e) { closePopUp(); }" />	
                                           <ValidationSettings ValidateOnLeave="False">
                                           </ValidationSettings>
                                           </dx:ASPxComboBox>	                                                                                                                                                                                                                                         
@@ -619,15 +619,24 @@
                         </dx:PopupControlContentControl>
                       </ContentCollection>
                     </dx:ASPxPopupControl>
-                    <dx:ASPxPopupControl ID="popAlert" runat="server" ClientInstanceName="popAlert" HeaderText="Alert!" Modal="False" PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AutoUpdatePosition="True" Width="300px">
+                    <!-- POPUP: POPALERT -->
+                    <dx:ASPxPopupControl ID="popAlert" runat="server" ClientInstanceName="popAlert" HeaderText="Alert!" Modal="False" PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" AutoUpdatePosition="True" Width="350px" Theme="Metropolis">
                       <ContentCollection>
                         <dx:PopupControlContentControl ID="PopupControlContentControl3" runat="server" SupportsDisabledAttribute="True">
                           <table>
                             <tr>
-                              <td><asp:Label ID="Label1" runat="server" Text="The selected hospital didn't return any value..."></asp:Label></td>
+                              <td><asp:Label ID="Label1" runat="server" Text="The selected hospital didn't return any value..." Font-Size="Medium"></asp:Label></td>
                             </tr>
                             <tr>
-                              <td><dx:ASPxButton ID="btnClosePopAlert_Hospital" runat="server" Text="Close" Height="35px" Width="90px" Font-Size="0.91em" Theme="Metropolis" ClientInstanceName="btnClosePopHospital" AutoPostBack="False"><ClientSideEvents Click="closePopUp" /></dx:ASPxButton></td>                                        
+                                <td> <br /> </td>
+                            </tr>
+                            <tr>
+                              <td><dx:ASPxButton ID="btnClosePopAlert_Hospital" runat="server" Text="Close" Height="35px" Width="90px" Font-Size="0.91em" Theme="Metropolis" ClientInstanceName="btnClosePopHospital" AutoPostBack="False">
+                                  <ClientSideEvents Click="function(s, e) {
+	closeAlert();
+	popHospital.Show();
+}" />
+                                  </dx:ASPxButton></td>                                        
                             </tr>
                           </table>              
                         </dx:PopupControlContentControl>
@@ -635,7 +644,6 @@
                     </dx:ASPxPopupControl>
                   </ContentTemplate>
                 </asp:UpdatePanel>
-
                 <!-- DIV: CHART 4 -->
                 <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional" OnLoad="UpdatePanel3_Load">
                   <ContentTemplate>                 
